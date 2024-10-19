@@ -1,0 +1,121 @@
+<h1>New Todo for <%= @category.name %></h1>
+
+<%= form_with model: [@category, @todo], local: true do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', category_todos_path(@category) %>
+class CategoriesController < ApplicationController
+    before_action :set_category, only: %i[show edit update destroy]
+  
+    def index
+      @categories = Category.all
+    end
+  
+    def show
+    end
+  
+    def new
+      @category = Category.new
+    end
+  
+    def create
+      @category = Category.new(category_params)
+      if @category.save
+        redirect_to categories_path, notice: 'Category was successfully created.'
+      else
+        render :new
+      end
+    end
+  
+    def edit
+    end
+  
+    def update
+      if @category.update(category_params)
+        redirect_to categories_path, notice: 'Category was successfully updated.'
+      else
+        render :edit
+      end
+    end
+  
+    def destroy
+      @category.destroy
+      redirect_to categories_path, notice: 'Category was successfully deleted.'
+    end
+  
+    private
+  
+    def set_category
+      @category = Category.find(params[:id])
+    end
+  
+    def category_params
+      params.require(:category).permit(:name)
+    end
+  end
+  <h1>New Todo</h1>
+
+<%= form_with model: @todo, local: true do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category_id, 'Category' %>
+    <%= form.collection_select :category_id, @categories, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', todos_path %>
+<h1>New Todo</h1>
+
+<%= form_with model: @todo, local: true do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category_id, 'Category' %>
+    <%= form.collection_select :category_id, @categories, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, Todo.statuses.keys.map { |status| [status.humanize, status] }, selected: :incomplete %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', todos_path %>

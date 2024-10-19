@@ -1,0 +1,13 @@
+<div id="<%= dom_id room %>">
+  <% room.messages.each do |message| %>
+    <%= message.content %>
+  <% end %>
+
+  <div class='new-message'>
+    <%= form_with model: Message.new(room: room) do |form| %>
+      <%= form.hidden_field :room_id %>
+      <%= form.text_field :content %>
+      <%= form.submit %>
+    <% end %>
+  </div>
+</div>

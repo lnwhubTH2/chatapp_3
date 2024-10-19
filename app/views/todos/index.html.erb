@@ -1,0 +1,48 @@
+<h1>Todos for <%= @category.name %></h1>
+<%= link_to 'New Todo', new_category_todo_path(@category) %>
+
+<ul>
+  <% @todos.each do |todo| %>
+    <li><%= todo.title %>: <%= todo.description %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to Categories', categories_path %>
+<h1>Todos</h1>
+<%= link_to 'New Todo', new_todo_path %>
+
+<ul>
+  <% @todos.each do |todo| %>
+    <li>
+      <%= link_to todo.title, todo_path(todo) %>
+      <%= link_to 'Edit', edit_todo_path(todo) %>
+      <%= link_to 'Delete', todo_path(todo), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+<h1>Todos</h1>
+<%= link_to 'New Todo', new_todo_path %>
+
+<ul>
+  <% @todos.each do |todo| %>
+    <li>
+      <%= link_to todo.title, todo_path(todo) %>
+      - Status: <%= todo.status %>
+      <%= link_to 'Edit', edit_todo_path(todo) %>
+      <%= link_to 'Delete', todo_path(todo), method: :delete, data: { confirm: 'Are you sure?' } %>
+      
+      <% if todo.incomplete? %>
+        <%= link_to 'Mark as Complete', complete_todo_path(todo), method: :patch %>
+      <% else %>
+        <%= link_to 'Mark as Incomplete', incomplete_todo_path(todo), method: :patch %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<ul>
+  <% @todos.each do |todo| %>
+    <li>
+      <%= todo.title %>: <%= todo.description %> - Status: <%= todo.status %>
+    </li>
+  <% end %>
+</ul>

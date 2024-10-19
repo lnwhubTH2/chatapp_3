@@ -1,0 +1,12 @@
+<div id='chatapp'>
+  <div id='room-list'>
+    <% @rooms.each do |room| %>
+      <div class='room'>
+        <%= room.name %>
+      </div>
+    <% end %>
+  </div>
+
+  <div id='message-list'>
+  </div>
+</div>

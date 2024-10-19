@@ -1,0 +1,139 @@
+/* CSS สำหรับการจัดเรียงและการออกแบบพื้นฐาน */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 3em;
+    color: #007bff;
+    margin-top: 20px;
+  }
+  
+  /* Container หลักสำหรับจัดตำแหน่ง */
+  .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Tab สำหรับจัดการสถานะ */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #eaeaea;
+    margin-bottom: 20px;
+  }
+  
+  .tabs a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 8px 8px 0 0;
+    margin: 0 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .tabs a.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  /* ฟอร์มสำหรับสร้างและแก้ไข Todo */
+  .form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+  }
+  
+  .form-container input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    font-size: 1.2em;
+  }
+  
+  .form-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .form-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* รายการ Todo */
+  .todo-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f1f1f1;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .todo-item.complete {
+    text-decoration: line-through;
+    color: #888;
+  }
+  
+  .todo-item .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .todo-item .actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .todo-item .actions button.complete {
+    color: #28a745;
+  }
+  
+  .todo-item .actions button.delete {
+    color: #dc3545;
+  }
+  
+  /* Tag ด้านขวา */
+  .tags {
+    background-color: #eaeaea;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .tags h3 {
+    color: #007bff;
+  }
+  
+  .tags .tag {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    display: inline-block;
+    margin: 5px 5px 0 0;
+    font-size: 0.9em;
+  }
+  

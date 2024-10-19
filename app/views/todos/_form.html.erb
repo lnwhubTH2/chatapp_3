@@ -1,0 +1,14 @@
+<div class="form-container">
+  <%= form_with(model: [@category, @todo], local: true) do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name, placeholder: "Enter Todo Name" %>
+  
+    <%= form.label :description %>
+    <%= form.text_area :description, rows: 3 %>
+
+    <%= form.label :status, "Mark as Complete" %>
+    <%= form.check_box :status %>
+
+    <%= form.submit class: 'button' %>
+  <% end %>
+</div>

@@ -1,0 +1,35 @@
+<h1><%= @todo.title %></h1>
+<p><%= @todo.description %></p>
+<p>Category: <%= @todo.category.name if @todo.category %></p>
+
+<%= link_to 'Edit', edit_todo_path(@todo) %>
+<%= link_to 'Delete', todo_path(@todo), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', todos_path %>
+<div class="container">
+  <h1><%= @category.name %></h1>
+  <div class="tabs">
+    <%= link_to 'Incomplete', category_todos_path(@category, status: 'incomplete'), class: 'active' %>
+    <%= link_to 'Complete', category_todos_path(@category, status: 'complete') %>
+  </div>
+  
+  <div class="form-container">
+    <%= link_to 'Create Todo', new_category_todo_path(@category), class: 'button' %>
+  </div>
+  
+  <ul class="todo-list">
+    <% @category.todos.each do |todo| %>
+      <li class="todo-item <%= 'complete' if todo.status %>">
+        <span><%= todo.name %></span>
+        <div class="actions">
+          <%= link_to '✔️', toggle_status_category_todo_path(@category, todo), method: :patch, class: 'complete' %>
+          <%= link_to '🗑️', category_todo_path(@category, todo), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete' %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  
+  <div class="tags">
+    <h3>Tags</h3>
+    <%= @category.name %>
+  </div>
+</div>
